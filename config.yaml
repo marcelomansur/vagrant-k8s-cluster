@@ -1,0 +1,39 @@
+---
+########################################################
+##
+## Arquivo yaml com as configurações específicas de cada
+## servidor provisionado no Vagrant
+##
+########################################################
+DOMAIN: "local"
+RAM: &machine_ram "2048"
+CPU: &machine_cpu "2"
+
+# Custom boxes
+boxes:
+  ubuntu-bionic64: &ubuntu-bionic64 "ubuntu/bionic64"
+
+# Configured hosts
+hosts:
+  - name: master-1
+    box: *ubuntu-bionic64
+    ram: *machine_ram
+    cpu: *machine_cpu
+    rede:
+      - 192.168.56.11
+    porta:
+      - 8080
+  - name: worker-1
+    box: *ubuntu-bionic64
+    ram: *machine_ram
+    cpu: *machine_cpu
+    rede:
+      - 192.168.56.21
+    porta:
+      - 8081
+  - name: worker-2
+    box: *ubuntu-bionic64
+    ram: *machine_ram
+    cpu: *machine_cpu
+    rede:
+      - 192.168.56.22
